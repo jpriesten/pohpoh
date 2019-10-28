@@ -1,0 +1,22 @@
+<!-- Sidebar list of options -->
+<div class="design_sidebar">
+    <mat-list>
+        <mat-list-item>
+            <div class="list_content">
+                <table>
+                    <tr *ngFor="let item of menuItems">
+                        <a [routerLink]="[ item.route ]">
+                            <td>
+                                <mat-icon>{{ item.icon }}</mat-icon>
+                            </td>
+                            <td>
+                                <span>{{ item.text }}</span>
+                            </td>
+                        </a>
+                    </tr>
+                </table>
+            </div>
+
+        </mat-list-item>
+    </mat-list>
+</div>

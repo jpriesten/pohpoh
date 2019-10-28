@@ -1,0 +1,13 @@
+tr > td {
+  padding-top: 10px;
+}
+a{
+  color: whitesmoke;
+}
+.design_sidebar {
+  margin-top: 15%;
+}
+.list_content {
+  font-size: small;
+  color: white;
+}

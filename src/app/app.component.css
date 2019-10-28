@@ -1,25 +1,12 @@
-body{
-    background: whitesmoke;
+body {
+  background: whitesmoke;
 }
 
-.put_space{
-    flex: 1 1 auto;
+mat-sidenav {
+  width: 200px;
+  background: #140e0e;
 }
 
-.design_card{
-    margin: 15%;
-    max-width: 450px;
-    background: white;
-    color: black;
+.content_layout {
+    margin: 2%;
 }
-
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 85%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-  

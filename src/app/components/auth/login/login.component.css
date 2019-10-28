@@ -1,0 +1,47 @@
+.design_card {
+  margin: 15%;
+  max-width: 450px;
+  background: whitesmoke;
+  color: black;
+}
+
+.design_form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 85%;
+}
+
+.design_form_field {
+  width: 100%;
+}
+
+.design_form_content {
+  color: black;
+}
+
+.card_title {
+  width: 100%;
+  color: #851313;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.color_field {
+  background-color: #851313;
+  color: white;
+}
+.color_item {
+  color: #851313;
+}
+
+mat-card {
+  box-shadow: none !important;
+}

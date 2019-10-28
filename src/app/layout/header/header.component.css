@@ -1,0 +1,11 @@
+a {
+  color: white;
+}
+
+.put_space {
+  flex: 1 1 auto;
+}
+
+.nav_background {
+  background-color: #851313;
+}

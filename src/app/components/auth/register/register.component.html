@@ -1,1 +1,97 @@
-<p>register works!</p>
+<div align="center">
+    <mat-card tabindex="0" class="design_card mat-elevation-z0">
+        <mat-card-header>
+            <mat-card-title class="card_title">Register</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="registerFormGroup" class="design_form">
+                <mat-form-field class="design_form_field">
+                    <input matInput placeholder="Name" formControlName="name">
+                    <mat-error *ngIf="registerFormGroup.get('name').dirty || registerFormGroup.get('name').touched">
+                        <div *ngFor="let validation of validation_messages.name">
+                            <span *ngIf="registerFormGroup.get('name').hasError(validation.type)">
+                                {{ validation.message }}
+                            </span>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="design_form_field">
+                    <input matInput placeholder="Phone number" formControlName="phone">
+                    <mat-error *ngIf="registerFormGroup.get('phone').dirty || registerFormGroup.get('phone').touched">
+                        <div *ngFor="let validation of validation_messages.phone">
+                            <span *ngIf="registerFormGroup.get('phone').hasError(validation.type)">
+                                {{ validation.message }}
+                            </span>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="design_form_field">
+                    <input matInput placeholder="Country" formControlName="country">
+                    <mat-error *ngIf="registerFormGroup.get('country').dirty || registerFormGroup.get('country').touched">
+                        <div *ngFor="let validation of validation_messages.country">
+                            <span *ngIf="registerFormGroup.get('country').hasError(validation.type)">
+                                {{ validation.message }}
+                            </span>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="design_form_field">
+                    <input matInput placeholder="City" formControlName="city">
+                    <mat-error *ngIf="registerFormGroup.get('city').dirty || registerFormGroup.get('city').touched">
+                        <div *ngFor="let validation of validation_messages.city">
+                            <span *ngIf="registerFormGroup.get('city').hasError(validation.type)">
+                                {{ validation.message }}
+                            </span>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="design_form_field">
+                    <input matInput placeholder="Address" formControlName="address">
+                    <mat-error *ngIf="registerFormGroup.get('address').dirty || registerFormGroup.get('address').touched">
+                        <div *ngFor="let validation of validation_messages.address">
+                            <span *ngIf="registerFormGroup.get('address').hasError(validation.type)">
+                                {{ validation.message }}
+                            </span>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="design_form_field">
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="registerFormGroup.get('email').dirty || registerFormGroup.get('email').touched">
+                        <div *ngFor="let validation of validation_messages.email">
+                            <span *ngIf="registerFormGroup.get('email').hasError(validation.type)">
+                                {{ validation.message }}
+                            </span>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="design_form_field">
+                    <input matInput placeholder="Password" formControlName="password">
+                    <mat-error *ngIf="registerFormGroup.get('password').dirty || registerFormGroup.get('password').touched">
+                        <div *ngFor="let validation of validation_messages.password">
+                            <span *ngIf="registerFormGroup.get('password').hasError(validation.type)">
+                                {{ validation.message }}
+                            </span>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <table>
+                <tr>
+                    <td align="center">
+                        <button mat-raised-button class="color_field">Register</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <small>Are you already a member?&nbsp;
+                            <a [routerLink]="[ '/login' ]" class="color_item">Login</a>
+                        </small>
+                    </td>
+                </tr>
+            </table>
+        </mat-card-actions>
+    </mat-card>
+</div>
