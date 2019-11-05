@@ -2,6 +2,10 @@ a {
   color: white;
 }
 
+.space_nav_items {
+  padding: 0 14px;
+}
+
 .put_space {
   flex: 1 1 auto;
 }

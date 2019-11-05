@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { Router } from '@angular/router';
+
+import { AuthenticationService } from "../../../services/authentication.service";
 
 @Component({
   selector: "app-register",
@@ -8,7 +11,11 @@ import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 })
 export class RegisterComponent implements OnInit {
   registerFormGroup: FormGroup;
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _auth: AuthenticationService,
+    private _router: Router
+  ) {}
 
   ngOnInit() {
     this.registerFormGroup = this._formBuilder.group({
@@ -33,7 +40,29 @@ export class RegisterComponent implements OnInit {
     address: [{ type: "required", message: "Address is required." }],
     city: [{ type: "required", message: "City is required." }],
     country: [{ type: "required", message: "Country is required." }]
-
   };
 
+  get regForm() {
+    return this.registerFormGroup.controls;
+  }
+
+  async register() {
+    try {
+      let newOrg = await this._auth.register(
+        this.regForm.name.value,
+        this.regForm.email.value,
+        this.regForm.password.value,
+        this.regForm.country.value,
+        this.regForm.phone.value,
+        this.regForm.city.value,
+        this.regForm.address.value
+      );
+      console.log("New Organization token: ", newOrg);
+      localStorage.setItem("token", newOrg);
+      this._router.navigate(['/products']);
+    } catch (error) {
+      console.error("Registration Error: ", error);
+    }
+    
+  }
 }

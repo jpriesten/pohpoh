@@ -1,11 +1,17 @@
 <mat-toolbar class="nav_background">
     <div>
-        <a [routerLink]="[ '/' ]">{{ title }}</a>
+        <a [routerLink]="[ '/' ]">{{ title | uppercase }}</a>
     </div>
     <span class="put_space"></span>
     <div>
-        <a [routerLink]="[ '/login' ]">
-            <button mat-raised-button>Login</button>
-        </a>
+        <span class="space_nav_items">
+            <a [routerLink]="[ '/products' ]">
+                <button mat-raised-button>Products</button>
+            </a>
+        </span>
+        <span *ngIf="isLoggedIn" class="space_nav_items">
+            <button mat-raised-button (click)="logout()">Logout</button>
+        </span>
     </div>
+
 </mat-toolbar>

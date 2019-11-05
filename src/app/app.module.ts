@@ -1,6 +1,9 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { QRCodeModule } from '../../node_modules/angularx-qrcode';
+
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -19,6 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { VerifyComponent } from './authenticated/verify/verify.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,9 @@ import { MatListModule } from '@angular/material/list';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    MainNavComponent
+    MainNavComponent,
+    VerifyComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -38,12 +45,14 @@ import { MatListModule } from '@angular/material/list';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

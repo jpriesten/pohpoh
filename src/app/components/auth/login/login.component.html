@@ -7,7 +7,6 @@
             <form [formGroup]="loginFormGroup" class="design_form">
                 <mat-form-field class="design_form_field">
                     <input matInput placeholder="Email" formControlName="email">
-                    <mat-hint>Errors appear instantly!</mat-hint>
                     <mat-error *ngIf="loginFormGroup.get('email').dirty || loginFormGroup.get('email').touched">
                         <div *ngFor="let validation of validation_messages.email">
                             <span *ngIf="loginFormGroup.get('email').hasError(validation.type)">
@@ -18,7 +17,6 @@
                 </mat-form-field>
                 <mat-form-field class="design_form_field">
                     <input matInput placeholder="Password" formControlName="password">
-                    <mat-hint>Errors appear instantly!</mat-hint>
                     <mat-error *ngIf="loginFormGroup.get('password').dirty || loginFormGroup.get('password').touched">
                         <div *ngFor="let validation of validation_messages.password">
                             <span *ngIf="loginFormGroup.get('password').hasError(validation.type)">
@@ -33,7 +31,9 @@
             <table>
                 <tr>
                     <td align="center">
-                        <button mat-raised-button class="color_field">Login</button>
+                        <button mat-raised-button class="color_field"
+                        [disabled]="!loginFormGroup.valid"
+                        (click)="login()">Login</button>
                     </td>
                 </tr>
                 <tr>
