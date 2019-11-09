@@ -7,5 +7,7 @@ export class UrlService {
 
   constructor() { }
 
-  public BASE_URL = "http://localhost:3000/";
+  //https://pohpoh.herokuapp.com/
+  //http://localhost:3000/
+  public BASE_URL = "https://pohpoh.herokuapp.com/"; 
 }
