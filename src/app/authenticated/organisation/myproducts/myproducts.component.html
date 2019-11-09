@@ -1,0 +1,15 @@
+<div class="page_title_row">
+    <div *ngIf="organisationProfile">
+        <small>
+            <a [routerLink]="[ '/organisation' ]" class="link_color">
+                {{organisationProfile.name}}</a>
+            > My Products
+        </small>
+    </div>
+    <span class="page_title_row_spacer"></span>
+    <div>
+        <button mat-icon-button aria-label="add icon" (click)="openDialog()" title="New product">
+            <mat-icon class="add_icon">add_circle</mat-icon>
+        </button>
+    </div>
+</div>

@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
 
   async login() {
     try {
-      console.log("Here: ", this.logForm)
+      console.log("Here: ", this.logForm);
       let user = await this._auth.login(this.logForm.email.value, this.logForm.password.value);
       console.log("Logged in User: ", user);
-      this._router.navigate(['/products']);
+      window.location.href = "/organisation";
     } catch (error) {
       console.error("Login Error: ", error);
     }

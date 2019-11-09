@@ -4,9 +4,14 @@
     </div>
     <span class="put_space"></span>
     <div>
-        <span class="space_nav_items">
+        <span class="space_nav_items" *ngIf="!isLoggedIn">
             <a [routerLink]="[ '/products' ]">
-                <button mat-raised-button>Products</button>
+                <button mat-button>Products</button>
+            </a>
+        </span>
+        <span *ngIf="isLoggedIn" class="space_nav_items">
+            <a [routerLink]="[ '/organisation/my-products' ]">
+                <button mat-button>My Products</button>
             </a>
         </span>
         <span *ngIf="isLoggedIn" class="space_nav_items">

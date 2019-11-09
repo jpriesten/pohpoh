@@ -1,0 +1,14 @@
+.add_button {
+  background: #851313;
+  color: white;
+}
+
+.design_form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 85%;
+}
+
+.design_form_field {
+  width: 100%;
+}

@@ -10,6 +10,9 @@ import { VerifyComponent } from "./authenticated/verify/verify.component";
 
 import { PagenotfoundComponent } from "./components/pagenotfound/pagenotfound.component";
 
+import { OrganisationComponent } from "./authenticated/organisation/organisation.component";
+import { MyproductsComponent } from "./authenticated/organisation/myproducts/myproducts.component";
+
 import { AuthGuard } from "./guard/auth.guard";
 
 const routes: Routes = [
@@ -35,12 +38,25 @@ const routes: Routes = [
     path: "verify",
     component: VerifyComponent
   },
+  {
+    path: "products",
+    component: ProductsComponent
+  },
 
   // Paths that need authentication to access
   {
-    path: "products",
-    component: ProductsComponent,
-    // canActivate: [AuthGuard]
+    path: "organisation",
+    children: [
+      {
+        path: "",
+        component: OrganisationComponent
+      },
+      {
+        path: "my-products",
+        component: MyproductsComponent
+      }
+    ],
+    canActivate: [AuthGuard]
   },
   {
     path: "**",

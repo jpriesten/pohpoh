@@ -13,11 +13,8 @@ export class HeaderComponent implements OnInit {
   constructor(private _router: Router, private _auth: AuthenticationService) {}
   
   ngOnInit() {
-    let token = localStorage.getItem("token");
-    if (token && token.length > 0 ){
-      this.isLoggedIn = true;
-    } else
-    this.isLoggedIn = false;
+    this._auth.isAuthenticated();
+    this.isLoggedIn = this._auth.isLoggedIn;
   }
 
   async logout() {

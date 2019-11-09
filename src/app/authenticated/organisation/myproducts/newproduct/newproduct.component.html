@@ -1,0 +1,73 @@
+<h2 mat-dialog-title>New Product</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="newProductFormGroup" class="design_form">
+        <mat-form-field class="design_form_field">
+            <input matInput placeholder="Product name" formControlName="name">
+            <mat-error *ngIf="newProductFormGroup.get('name').dirty || newProductFormGroup.get('name').touched">
+                <div *ngFor="let validation of validation_messages.name">
+                    <span *ngIf="newProductFormGroup.get('name').hasError(validation.type)">
+                        {{ validation.message }}
+                    </span>
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="design_form_field">
+            <input matInput placeholder="Product code" formControlName="productCode">
+            <mat-error
+                *ngIf="newProductFormGroup.get('productCode').dirty || newProductFormGroup.get('productCode').touched">
+                <div *ngFor="let validation of validation_messages.productCode">
+                    <span *ngIf="newProductFormGroup.get('productCode').hasError(validation.type)">
+                        {{ validation.message }}
+                    </span>
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="design_form_field">
+            <input matInput placeholder="Description" formControlName="descr">
+            <mat-error *ngIf="newProductFormGroup.get('descr').dirty || newProductFormGroup.get('descr').touched">
+                <div *ngFor="let validation of validation_messages.descr">
+                    <span *ngIf="newProductFormGroup.get('descr').hasError(validation.type)">
+                        {{ validation.message }}
+                    </span>
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="design_form_field">
+            <input matInput placeholder="Manufacturer's name" formControlName="manufacturerName">
+            <mat-error
+                *ngIf="newProductFormGroup.get('manufacturerName').dirty || newProductFormGroup.get('manufacturerName').touched">
+                <div *ngFor="let validation of validation_messages.manufacturerName">
+                    <span *ngIf="newProductFormGroup.get('manufacturerName').hasError(validation.type)">
+                        {{ validation.message }}
+                    </span>
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="design_form_field">
+            <input matInput placeholder="Manufacturer's address" formControlName="manufacturerAddress">
+            <mat-error
+                *ngIf="newProductFormGroup.get('manufacturerAddress').dirty || newProductFormGroup.get('manufacturerAddress').touched">
+                <div *ngFor="let validation of validation_messages.manufacturerAddress">
+                    <span *ngIf="newProductFormGroup.get('manufacturerAddress').hasError(validation.type)">
+                        {{ validation.message }}
+                    </span>
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="design_form_field">
+            <input matInput placeholder="Date created" formControlName="dateCreated">
+            <mat-error
+                *ngIf="newProductFormGroup.get('dateCreated').dirty || newProductFormGroup.get('dateCreated').touched">
+                <div *ngFor="let validation of validation_messages.dateCreated">
+                    <span *ngIf="newProductFormGroup.get('dateCreated').hasError(validation.type)">
+                        {{ validation.message }}
+                    </span>
+                </div>
+            </mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" class="add_button" [disabled]="!newProductFormGroup.valid">Add</button>
+</mat-dialog-actions>

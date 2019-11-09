@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
       );
       console.log("New Organization token: ", newOrg);
       localStorage.setItem("token", newOrg);
-      this._router.navigate(['/products']);
+      window.location.href = "/organisation";
     } catch (error) {
       console.error("Registration Error: ", error);
     }

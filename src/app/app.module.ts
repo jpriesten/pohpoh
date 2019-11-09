@@ -24,6 +24,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { VerifyComponent } from './authenticated/verify/verify.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { OrganisationComponent } from './authenticated/organisation/organisation.component';
+import { MyproductsComponent } from './authenticated/organisation/myproducts/myproducts.component';
+import { NewproductComponent } from './authenticated/organisation/myproducts/newproduct/newproduct.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     FooterComponent,
     MainNavComponent,
     VerifyComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    OrganisationComponent,
+    MyproductsComponent,
+    NewproductComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +61,9 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     QRCodeModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NewproductComponent
+  ]
 })
 export class AppModule {}

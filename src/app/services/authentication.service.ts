@@ -2,19 +2,18 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 
 import { UrlService } from "./core/url.service";
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    "Content-Type": "application/json"
-  })
-};
+import { CoreService } from "./core/core.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthenticationService {
   public isLoggedIn = false;
-  constructor(private _url: UrlService, private _http: HttpClient) {}
+  constructor(
+    private _url: UrlService,
+    private _http: HttpClient,
+    private _core: CoreService
+  ) {}
 
   register(
     name: String,
@@ -37,7 +36,11 @@ export class AuthenticationService {
 
     return new Promise((resolve, reject) => {
       this._http
-        .post<any>(this._url.BASE_URL + "users/create", body, httpOptions)
+        .post<any>(
+          this._url.BASE_URL + "users/create",
+          body,
+          this._core.httpOptions
+        )
         .subscribe(response => {
           if (response.token.error != false) {
             reject(response.token);
@@ -59,7 +62,11 @@ export class AuthenticationService {
 
     return new Promise((resolve, reject) => {
       this._http
-        .post<any>(this._url.BASE_URL + "users/login", body, httpOptions)
+        .post<any>(
+          this._url.BASE_URL + "users/login",
+          body,
+          this._core.httpOptions
+        )
         .subscribe(
           response => {
             if (response.token.error == true) {
@@ -86,35 +93,52 @@ export class AuthenticationService {
   }
 
   logout(): Promise<any> {
-    
-    let token = localStorage.getItem("token");
-
-    let HTTPOptions = new HttpHeaders().set("Authorization", "Bearer " + token);
     return new Promise((resolve, reject) => {
-      this._http.post<any>(this._url.BASE_URL + 'users/logout', {}, {headers: HTTPOptions}).subscribe(response => {
-        if(response['error'] != false) {
-          reject(response);
-          return;
-        }
-        this.removeToken();
-        this.isLoggedIn = false;
-        resolve(response);
-      }, errorResponse => {
-        console.log("Errors: ", errorResponse);
-        if(errorResponse.error.error != false) {
-          // this.tokenExpired = errorResponse.error;
-          this.removeToken();
-          reject(errorResponse.error);
-          return;
-        }
-      });
-    }); 
+      this._http
+        .post<any>(
+          this._url.BASE_URL + "users/logout",
+          {},
+          { headers: this._core.authorizedHttpOptions }
+        )
+        .subscribe(
+          response => {
+            if (response["error"] != false) {
+              reject(response);
+              return;
+            }
+            this.removeToken();
+            this.notLoggedIn()
+            resolve(response);
+          },
+          errorResponse => {
+            console.log("Errors: ", errorResponse);
+            if (errorResponse.error.error != false) {
+              // this.tokenExpired = errorResponse.error;
+              this.removeToken();
+              reject(errorResponse.error);
+              return;
+            }
+          }
+        );
+    });
   }
 
   removeToken() {
-    localStorage.removeItem('token');
-    // this.isLoggedIn = false;
-    // delete this.token;
-    // delete this.tokenExpired;
+    localStorage.removeItem("token");
+  }
+
+  notLoggedIn() {
+    this.isLoggedIn = false;
+  }
+
+  actionJwtExpired() {
+    this.notLoggedIn();
+    this.removeToken();
+  }
+
+  isAuthenticated() {
+    if (this._core.token && this._core.token.length > 0) {
+      this.isLoggedIn = true;
+    } else this.isLoggedIn = false;
   }
 }
