@@ -1,4 +1,4 @@
-<div class="page_content" *ngIf="allProducts;else templateName" class="container" fxLayout="row"
+<div class="page_content" *ngIf="allProducts;else productName" class="container" fxLayout="row"
     fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
     <div *ngFor="let product of allProducts">
         <mat-card class="card-picture">
@@ -19,7 +19,7 @@
             </mat-card-actions>
         </mat-card>
     </div>
-    <ng-template #templateName>
-        <h1>No products</h1>
-    </ng-template>
 </div>
+<ng-template #productName>
+    <h1>No products</h1>
+</ng-template>
