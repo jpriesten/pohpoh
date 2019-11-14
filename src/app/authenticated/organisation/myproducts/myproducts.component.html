@@ -13,3 +13,28 @@
         </button>
     </div>
 </div>
+<div class="page_content" *ngIf="organisationProducts;else templateName" class="container" fxLayout="row"
+    fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <div *ngFor="let product of organisationProducts">
+        <mat-card class="card-picture">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{ product.productName}}</mat-card-title>
+                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="image(product)" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    {{ product.descr }}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <ng-template #templateName>
+        <h1>No products</h1>
+    </ng-template>
+</div>

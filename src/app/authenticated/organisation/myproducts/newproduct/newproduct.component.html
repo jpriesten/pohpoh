@@ -23,7 +23,7 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field class="design_form_field">
-            <input matInput placeholder="Description" formControlName="descr">
+            <textarea matInput placeholder="Description" formControlName="descr"></textarea>
             <mat-error *ngIf="newProductFormGroup.get('descr').dirty || newProductFormGroup.get('descr').touched">
                 <div *ngFor="let validation of validation_messages.descr">
                     <span *ngIf="newProductFormGroup.get('descr').hasError(validation.type)">
@@ -55,7 +55,9 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field class="design_form_field">
-            <input matInput placeholder="Date created" formControlName="dateCreated">
+            <input matInput [matDatepicker]="myDatepicker" placeholder="Date created" formControlName="dateCreated">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
             <mat-error
                 *ngIf="newProductFormGroup.get('dateCreated').dirty || newProductFormGroup.get('dateCreated').touched">
                 <div *ngFor="let validation of validation_messages.dateCreated">
@@ -69,5 +71,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" class="add_button" [disabled]="!newProductFormGroup.valid">Add</button>
+    <button mat-button [mat-dialog-close]="true" class="add_button" [disabled]="!newProductFormGroup.valid"
+        (click)="newProduct()">Add</button>
 </mat-dialog-actions>

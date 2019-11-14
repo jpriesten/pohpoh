@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { QRCodeModule } from '../../node_modules/angularx-qrcode';
 
 
@@ -58,7 +59,8 @@ import { NewproductComponent } from './authenticated/organisation/myproducts/new
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    QRCodeModule
+    QRCodeModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],

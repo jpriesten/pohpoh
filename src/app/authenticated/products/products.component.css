@@ -1,0 +1,27 @@
+.page_content {
+  align-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  justify-content: left;
+  padding: 8px 20px;
+}
+
+.example-card {
+  max-width: auto;
+  margin: 10px;
+}
+
+.card-picture {
+  max-width: auto;
+  margin-bottom: 2%;
+}
+
+.container {
+  min-height: 100%;
+  width: 100%;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
