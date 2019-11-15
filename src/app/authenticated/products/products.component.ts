@@ -11,6 +11,7 @@ import { ProductService } from "../../services/product.service";
 })
 export class ProductsComponent implements OnInit {
   public allProducts: [];
+  public hasProductsLoaded = false;
 
   constructor(
     private _router: Router,
@@ -27,9 +28,11 @@ export class ProductsComponent implements OnInit {
     try {
       let myProducts = await this._productSvc.fetchAllProducts();
       this.allProducts = myProducts;
+      this.hasProductsLoaded = true;
       console.log("All products: ", this.allProducts);
     } catch (error) {
       console.error("Error: ", error);
+      this.hasProductsLoaded = false;
     }
   }
 

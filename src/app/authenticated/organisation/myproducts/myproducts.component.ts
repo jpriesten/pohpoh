@@ -16,6 +16,8 @@ import { NewproductComponent } from "./newproduct/newproduct.component";
 export class MyproductsComponent implements OnInit {
   public organisationProfile: any;
   public organisationProducts: [];
+  public hasProductsLoaded = false;
+
   constructor(
     private _organisation: OrganisationService,
     private _router: Router,
@@ -68,9 +70,10 @@ export class MyproductsComponent implements OnInit {
     try {
       let myProducts = await this._productSvc.fetchProductsByUser();
       this.organisationProducts = myProducts;
-      // this.organisationProducts[0].photo = "data:image/png;base64," + myProducts[0].photo;
+      this.hasProductsLoaded = true;
       console.log("My products: ", this.organisationProducts);
     } catch (error) {
+      this.hasProductsLoaded = false;
       console.error("Error: ", error);
     }
   }

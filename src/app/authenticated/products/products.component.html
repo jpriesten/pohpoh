@@ -1,25 +1,28 @@
-<div class="page_content" *ngIf="allProducts;else productName" class="container" fxLayout="row"
-    fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+<div class="page_empty_content" *ngIf="!allProducts && !hasProductsLoaded">
+    <mat-spinner color="warn" diameter=70>
+    </mat-spinner>
+</div>
+<div class="page_content container" *ngIf="allProducts" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
+    fxLayoutGap="0.5%" fxLayoutAlign="center">
     <div *ngFor="let product of allProducts">
         <mat-card class="card-picture">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{ product.productName}}</mat-card-title>
-                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            </mat-card-header>
             <img mat-card-image [src]="image(product)" alt="Photo of a Shiba Inu">
+            <mat-card-title>{{ product.productName}}</mat-card-title>
+            <mat-card-subtitle>{{ product.manufacturerName }} <br><small>{{ product.manufacturerAddress }}</small>
+            </mat-card-subtitle>
             <mat-card-content>
                 <p>
                     {{ product.descr }}
                 </p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
+                <button mat-raised-button color="primary">More details</button>
             </mat-card-actions>
         </mat-card>
     </div>
 </div>
 <ng-template #productName>
-    <h1>No products</h1>
+    <div class="page_empty_content">
+        <h1>No products</h1>
+    </div>
 </ng-template>

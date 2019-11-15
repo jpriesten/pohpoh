@@ -3,12 +3,15 @@
   align-items: flex-start;
   display: flex;
   justify-content: left;
-  padding: 8px 20px;
+  padding: 8px;
 }
 
-.example-card {
-  max-width: auto;
-  margin: 10px;
+.page_empty_content {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
 }
 
 .card-picture {
@@ -21,7 +24,6 @@
   width: 100%;
 }
 
-.example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
+.spinner {
+  color: #851313;
 }
