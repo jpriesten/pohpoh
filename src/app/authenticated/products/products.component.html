@@ -2,7 +2,7 @@
     <mat-spinner color="warn" diameter=70>
     </mat-spinner>
 </div>
-<div class="page_content container" *ngIf="allProducts" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
+<div class="page_content container" *ngIf="allProducts;else productName" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
     fxLayoutGap="0.5%" fxLayoutAlign="center">
     <div *ngFor="let product of allProducts">
         <mat-card class="card-picture">

@@ -1,1 +1,52 @@
-<p>verify works!</p>
+<div class="container">
+    <div class="search_content">
+        <h2 class="format_heading">PohPoh Product Authentication</h2>
+    </div>
+    <div class="search_content">
+        <form class="design_form" [formGroup]="searchProductFormGroup">
+            <mat-form-field class="design_form_field">
+                <input type="text" matInput placeholder="Product Code" formControlName="productCode">
+                <mat-error
+                    *ngIf="searchProductFormGroup.get('productCode').dirty || searchProductFormGroup.get('productCode').touched">
+                    <div *ngFor="let validation of validation_messages.productCode">
+                        <span *ngIf="searchProductFormGroup.get('productCode').hasError(validation.type)">
+                            {{ validation.message }}
+                        </span>
+                    </div>
+                </mat-error>
+                <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearField()"
+                    *ngIf="searchForm.productCode.value">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <div class="verify_button">
+                <div *ngIf="verifyClicked && !productDetails && !hasProductLoaded">
+                    <mat-spinner color="warn" diameter=30>
+                    </mat-spinner>
+                </div>
+                <span class="put_space"></span>
+                <button mat-raised-button color="primary" [disabled]="!searchProductFormGroup.valid"
+                    (click)="verify()">VERIFY</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="" *ngIf="productDetails" fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center">
+        <div *ngFor="let detail of productDetails">
+            <mat-card class="card-picture">
+                <img mat-card-image [src]="image(detail)" alt="Photo of a Shiba Inu">
+                <mat-card-title>{{ detail.productName}}</mat-card-title>
+                <mat-card-subtitle>{{ detail.manufacturerName }} <br><small>{{ detail.manufacturerAddress }}</small>
+                </mat-card-subtitle>
+                <mat-card-content>
+                    <p>
+                        {{ detail.descr }}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary">More details</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

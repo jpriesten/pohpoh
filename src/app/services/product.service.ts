@@ -37,11 +37,9 @@ export class ProductService {
 
     return new Promise((resolve, reject) => {
       this._http
-        .post<any>(
-          this._url.BASE_URL + "products/new",
-          body,
-          { headers: this._core.authorizedHttpOptions}
-        )
+        .post<any>(this._url.BASE_URL + "products/new", body, {
+          headers: this._core.authorizedHttpOptions
+        })
         .subscribe(
           response => {
             if (response.error != false) {
@@ -62,9 +60,11 @@ export class ProductService {
   }
 
   fetchProductsByUser(): Promise<any> {
-
     return new Promise((resolve, reject) => {
-      this._http.get<any>(this._url.BASE_URL + "products/me", { headers: this._core.authorizedHttpOptions })
+      this._http
+        .get<any>(this._url.BASE_URL + "products/me", {
+          headers: this._core.authorizedHttpOptions
+        })
         .subscribe(
           response => {
             if (response.error != false) {
@@ -85,9 +85,9 @@ export class ProductService {
   }
 
   fetchAllProducts(): Promise<any> {
-
     return new Promise((resolve, reject) => {
-      this._http.get<any>(this._url.BASE_URL + "products", this._core.httpOptions)
+      this._http
+        .get<any>(this._url.BASE_URL + "products", this._core.httpOptions)
         .subscribe(
           response => {
             if (response.error != false) {
@@ -100,6 +100,31 @@ export class ProductService {
             console.log("Errors: ", errorResponse);
             if (errorResponse.error != false) {
               reject(errorResponse.result);
+              return;
+            }
+          }
+        );
+    });
+  }
+
+  fetchProductByCode(productCode: any): Promise<any> {
+    let params = new HttpParams().set("productCode", productCode);
+
+    return new Promise((resolve, reject) => {
+      this._http
+        .get<any>(this._url.BASE_URL + "product", { params: params })
+        .subscribe(
+          response => {
+            if (response.error != false) {
+              reject(response.result);
+              return;
+            }
+            resolve(response.result);
+          },
+          errorResponse => {
+            console.log("Errors: ", errorResponse);
+            if (errorResponse.error != false) {
+              reject(errorResponse.error.result);
               return;
             }
           }

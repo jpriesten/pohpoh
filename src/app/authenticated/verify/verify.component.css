@@ -1,0 +1,51 @@
+mat-card {
+  box-shadow: none !important;
+}
+
+.container {
+  min-height: 100%;
+  width: 100%;
+}
+
+.spinner {
+  color: #851313;
+}
+
+.search_content {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.verify_button {
+  align-content: flex-end;
+  align-items: flex-end;
+  display: flex;
+  justify-content: right;
+}
+
+.design_form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 85%;
+}
+
+.design_form_field {
+  width: 100%;
+}
+
+.format_heading {
+  font-weight: bold;
+  color: #851313;
+}
+
+.card-picture {
+  max-width: auto;
+  margin-bottom: 2%;
+}
+
+.put_space {
+  flex: 1 1 auto;
+}
